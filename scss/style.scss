@@ -55,15 +55,25 @@ body.lock {
     width: 270px;
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
-    background-size: 300% 100%;
-    background-image: linear-gradient(90deg, #b25792 12.6%, #75365f 82.8%);
+    // background-size: 300% 100%;
+    // background-image: linear-gradient(90deg, #b25792 12.6%, #75365f 82.8%);
+    background-color: var(--clr5);
     box-shadow: 0 4px 15px 0 rgba(64, 80, 110, 0.39);
     font-size: 18px;
 
     &:hover {
         box-shadow: 0 4px 15px 0 rgba(27, 33, 44, 0.39);
-        background-position: 60% 0;
+        background-color: #863d6e;
     }
+    
+    &:active {
+        background-color: #885276;
+    }
+
+    &:disabled {
+        opacity: 0.15;
+    }
+
 }
 
 .img {
@@ -628,7 +638,7 @@ body.lock {
 
     &__input-select {
         cursor: pointer;
-    }
+    } 
 
     &__button {
         position: relative;
@@ -658,13 +668,22 @@ body.lock {
     outline: none;
     margin: 0 auto;
     border: 1px solid #00000017;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        border: 1px solid var(--clr3);
+    }
+
+    &:focus {
+        border: 1px solid var(--clr4);
+    }
 
     &::placeholder {
         color: rgba(76, 43, 107, 0.582);
     }
 
     &.error {
-        border: 2px solid #cc0b0b;
+        border: 1px solid var(--clr5);
     }
 
     @media (max-width: 540px) {
@@ -898,6 +917,10 @@ body.lock {
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
+
+        @media (max-width: 530px) {
+            gap: 10px;
+        }
     }
 
     &__slide {
@@ -999,12 +1022,13 @@ body.lock {
     &__block {
         flex: 0 1 50%;
 
-        & h3{
+        & h3 {
             font-weight: 600;
             font-size: 24px;
             margin-bottom: 10px;
             text-align: right;
         }
+
         @media (max-width: 1000px) {
             width: 100%;
         }
@@ -1055,9 +1079,7 @@ body.lock {
     border-radius: 20px;
 
 
-    &__title {
-        
-    }
+    &__title {}
 }
 
 table {
@@ -1168,7 +1190,7 @@ th {
         padding: 15px 25px;
         border-radius: 8px;
 
-        & h3{
+        & h3 {
             font-weight: 700;
             font-size: 18px;
             line-height: 24px;
@@ -1178,7 +1200,7 @@ th {
             position: relative;
             cursor: pointer;
             padding-right: 30px;
-    
+
             &::after,
             &::before {
                 content: '';
@@ -1189,38 +1211,38 @@ th {
                 background-color: #313133;
                 transition: all 0.3s ease-in-out;
             }
-    
+
             &::after {
                 right: 0;
             }
-    
+
             &::before {
                 transform: rotate(90deg);
                 right: 0;
             }
-    
+
             &.active::before {
                 transform: rotate(45deg);
             }
-    
+
             &.active::after {
                 transform: rotate(-45deg);
             }
-    
+
             &.active::before,
             &.active::after {
                 background-color: var(--clr5);
             }
         }
 
-        & p{
+        & p {
             font-weight: 400;
             font-size: 16px;
             line-height: 26px;
             padding-top: 10px;
             display: none;
             color: #5e5e5e;
-    
+
             &::before {
                 content: '';
                 background-color: var(--clr4);
@@ -1527,17 +1549,27 @@ th {
     margin: 0 auto 10px;
 
     & .popup-input {
-        width: 100%;
+        width: 100%; 
         font-size: 16px;
         color: #2d425c;
         padding: 12px;
         border: 1px solid #dedede;
         border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            border: 1px solid var(--clr3);
+        }
+
+        &:focus {
+            border: 1px solid var(--clr4);
+        }
     }
 
     & .error {
-        border: 1px solid #cc0b0b;
+        border: 1px solid var(--clr5);
     }
+
 }
 
 .popup-input__text {
@@ -1668,4 +1700,94 @@ th {
         }
     }
 
+}
+
+
+
+
+
+// ============================404================================
+
+.error-page {
+    min-height: 100vh;
+    background: url('../img/advantages/bg.webp') center / cover no-repeat;
+    display: flex;
+    padding: 20px 0;
+
+    &__body {
+        flex: 1 1 auto;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 1300px;
+        margin: 0 auto;
+        width: 100%;
+        color: var(--clr5);
+        padding: 0 10px;
+
+        & h1 {
+            font-size: 44px;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 700;
+            max-width: 730px;
+            line-height: 120%;
+            margin: 16px auto;
+
+            @media (max-width: 1300px) {
+                font-size: calc(30px + (44 - 30) * ((100vw - 768px) / (1300 - 768)));
+            }
+
+            @media (max-width: 768px) {
+                font-size: 26px;
+            }
+        }
+
+        & p {
+            max-width: 525px;
+            margin: 0 auto 36px;
+            color: var(--clr2);
+
+            & span {
+                color: var(--clr5);
+                font-family: 'Comfortaa', sans-serif;
+                font-weight: 700;
+                font-size: 22px;
+            }
+        }
+    }
+
+    &__block {
+
+        & span {
+            font-size: 150px;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 700;
+            color: var(--clr5);
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+            cursor: pointer;
+
+            @media (max-width: 1300px) {
+                font-size: calc(115px + (150 - 115) * ((100vw - 320px) / (1300 - 320)));
+            }
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+            &:nth-child(2) {
+                color: var(--clr4);
+            }
+        }
+    }
+
+    &__btn {
+        align-self: center;
+
+        @media (max-width: 380px) {
+            align-self: auto;
+        }
+
+    }
 }
